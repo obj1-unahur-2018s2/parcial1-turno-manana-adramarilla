@@ -3,6 +3,7 @@ import profesionales.*
 import universidades.*
 
 
+
 describe "Test Etapa 1" {
    
       var univSanMartin = new Universidad()
@@ -13,6 +14,11 @@ describe "Test Etapa 1" {
       var melina = new ProfesionalAsociado()
       var rocio = new ProfesionalLibre()
       var luciana = new ProfesionalLibre()
+      var empresa1 = new Empresa()
+     
+      
+       
+      
       
        
   fixture {
@@ -27,126 +33,41 @@ describe "Test Etapa 1" {
   			juana.setUniversidad("Universidad de Rosario")
   			melina.setUniversidad("Universidad de Corrientes")
   			rocio.setUniversidad("Universidad de Hurlingham")
-  			rocio.setHonorariosPorHora (5000)
+  			rocio.honorariosPorHora (5000)
   			rocio.setProvTrabaja ("Buenos Aires")
   			rocio.provinciasDondePuedeTrabajar("Santa Fe")
   			rocio.provinciasDondePuedeTrabajar("Cordoba")
   			rocio.provinciasDondePuedeTrabajar("Buenos Aires")
   			luciana.setUniversidad("Universidad de Rosario")
-  			luciana.setHonorariosPorHora (3200)
-  			luciana.provinciasDondePuedeTrabajar("Santa Fe", "Entre Rios")
+  			luciana.sethonorariosPorHora (3200)
+  			luciana.provinciasDondePuedeTrabajar("Santa Fe")
+  			luciana.provinciasDondePuedeTrabajar("Entre Rios")
   			luciana.setProvTrabaja ("Santa Fe")
-  			}
+  			
+      	}
   		     
        
         
     test "Profesionales Caros" {
             
-            luciana.honorarioReferencia(3500)
-            rocio.honorarioReferencia(3500)
-            melina.honorarioReferencia(3500)
-            juana.honorarioReferencia(3500)
-            
-            luciana.agregarProfesional(luciana)
-            rocio.agregarProfesional(rocio)
-            melina.agregarProfesional(melina)
-            juana.agregarProfesional(juana)
-            luciana.profesionalesCaros()
-            rocio.profesionalesCaros()
-            melina.profesionalesCaros()
-            juana.profesionalesCaros()
+          
+            empresa1.honorarioReferencia(3500)
+            empresa1.agregarProfesional(luciana)
+            empresa1.agregarProfesional(rocio)
+            empresa1.agregarProfesional(melina)
+            empresa1.agregarProfesional(juana)
+           
+           
             
                      
             
-        assert.equals(rocio, luciana.profesionalesCaros()or 
-        					rocio.profesionalesCaros() or
-        					melina.profesionalesCaros() or
-        					juana.profesionalesCaros())
+        assert.equals(#{"rocio"}, empresa1.profesionalesCaros())}
+      //   assert.equals (#{"Corrientes", "Hurlingham", "Rosario"}, empresa1.universidadesFormadoras())
+     //    assert.equals (#{"juana", empresa1.profesionalBarato()} )
+                  
+         }
         
-        }    
-
-}
-/*            cachito.ingresoColor("rojo")
-            corsaAzulDeportes.ingresoColor("azul")
-            corsaVerdeDeportes.ingresoColor("Verde")
-       
-       
-            autoDeportes.setIngresoPeso(1200)
-            autoDeportes.setCapacidad(5)
-            autoDeportes.setVelocMaxima(160)
-            autoDeportes.setColor("beige")
-            traffic.tipoInterior(2)
-            traffic.tipoMotor(2)
-            traffic.pesoMotor()
-            traffic.pesoInterior()
-                   
-       
-        cachito.peso() //1300       
-        corsaAzulDeportes.peso()
-        corsaVerdeDeportes.peso()
-        kwidDeportes.peso()
-        autoDeportes.peso()
-        kwidCultura1.peso() //1350
-        kwidCultura2.peso() //1350
-        kwidCultura3.peso() //1200
-        traffic.peso() //5800
-       
-       
-        /*cachito.agregarAflota()
-        corsaAzulDeportes.agregarAflota()
-        corsaVerdeDeportes.agregarAflota()
-        kwidDeportes.agregarAflota()
-        autoDeportes.agregarAflota()
-       
-       
-        assert.equals(6450, (cachito.peso() +corsaAzulDeportes.peso()+ corsaVerdeDeportes.peso() + kwidDeportes.peso()+ autoDeportes.peso()))
-        assert.equals(11000, (cachito.peso()+kwidCultura1.peso()+ kwidCultura2.peso() + kwidCultura3.peso() + traffic.peso()))
-        //assert.equals(true, cachito.estaBienEquipada() and corsaAzulDeportes.estaBienEquipada() and corsaVerdeDeportes.estaBienEquipada())
-        
-       
-    test "Esta bien Equipada" {
-            cachito.ingresoColor("rojo")
-            corsaAzulDeportes.ingresoColor("azul")
-            corsaVerdeDeportes.ingresoColor("Verde")
-        var kwidDeportes = new Kwid()
-            kwidDeportes.tieneTanque()
-        var kwidCultura1 = new Kwid()
-            kwidCultura1.tieneTanque()
-        var kwidCultura2 = new Kwid()
-            kwidCultura2.tieneTanque()
-        var kwidCultura3 = new Kwid()
-        var autoDeportes = new AutosEspeciales()
-            autoDeportes.setIngresoPeso(1200)
-            autoDeportes.setCapacidad(5)
-            autoDeportes.setVelocMaxima(160)
-            autoDeportes.setColor("beige")
-            traffic.tipoInterior(2)
-            traffic.tipoMotor(2)
-            traffic.pesoMotor()
-            traffic.pesoInterior()
-         var deportes = new Flota()
-              deportes.nroEmpleados(45)
-         var cultura = new Flota()
-              cultura.nroEmpleados(31)
-         
-        deportes.agregarAFlota(cachito)
-        deportes.agregarAFlota(corsaAzulDeportes)
-        deportes.agregarAFlota(corsaVerdeDeportes)
-        deportes.agregarAFlota(kwidDeportes)
-        deportes.agregarAFlota(autoDeportes)
-        deportes.setColorABuscar ("azul")       
-        cultura.agregarAFlota(cachito)
-        cultura.agregarAFlota(kwidCultura1)       
-        cultura.agregarAFlota(kwidCultura2)
-        cultura.agregarAFlota(kwidCultura3)
-        cultura.agregarAFlota(traffic)
-        cultura.setColorABuscar ("azul")       
-         
-        assert.equals(true, deportes.estaBienEquipada())
-        assert.equals(true, cultura.estaBienEquipada())
-        assert.equals(10 ,cultura.capacidadTotalEnColor())
-       
-    }
-
-    }
-*/
+        //como universidades formadoras, a las de Rosario, Corrientes y Hurlingham.
+}    
+//como profesional más barato a Juana.
+    

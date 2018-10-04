@@ -1,3 +1,4 @@
+import empresa.*
 // esta clase está completa, no necesita nada más
 class ProfesionalAsociado {
 	var universidad
@@ -30,8 +31,8 @@ class ProfesionalLibre {
 	method setUniversidad(univ) { universidad = univ }
 	method setProvTrabaja (pcia) { provinciaTrabaja.add(pcia)}
 	method provinciasDondePuedeTrabajar(provincia1) { return #{provincia1} } //se indica para cada uno en qué provincias pueden trabajar
-	method setHonorariosPorHora (honorariosPorHora) {honorarios = honorariosPorHora }
-	method honorariosPorHora() { return  honorarios} //y los honorarios por hora, además de la universidad.
+	method sethonorariosPorHora(honorariosPorHora) { honorarios = honorariosPorHora}
+	method honorariosPorHora() { return honorarios} //y los honorarios por hora, además de la universidad.
 }
 
 /*Una empresa que contrate a estos cuatro profesionales,
